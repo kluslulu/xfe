@@ -5,7 +5,7 @@
   <link href="/xfe/atom.xml" rel="self"/>
   
   <link href="http://sinaad.github.io/"/>
-  <updated>2016-04-14T10:35:20.000Z</updated>
+  <updated>2016-04-14T10:36:51.000Z</updated>
   <id>http://sinaad.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://sinaad.github.io/2016/04/14/cut-and-copy-commands/"/>
     <id>http://sinaad.github.io/2016/04/14/cut-and-copy-commands/</id>
     <published>2016-04-14T05:33:23.000Z</published>
-    <updated>2016-04-14T10:35:20.000Z</updated>
+    <updated>2016-04-14T10:36:51.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;本文根据&lt;a href=&quot;https://developers.google.com/web/updates/2015/04/cut-and-copy-commands翻译&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developers.google.com/web/updates/2015/04/cut-and-copy-commands翻译&lt;/a&gt;&lt;/p&gt;
@@ -64,7 +64,13 @@
     </summary>
     
     
-      <category term="js, cut, copy, chrome" scheme="http://sinaad.github.io/tags/js-cut-copy-chrome/"/>
+      <category term="js" scheme="http://sinaad.github.io/tags/js/"/>
+    
+      <category term="cut" scheme="http://sinaad.github.io/tags/cut/"/>
+    
+      <category term="copy" scheme="http://sinaad.github.io/tags/copy/"/>
+    
+      <category term="chrome" scheme="http://sinaad.github.io/tags/chrome/"/>
     
   </entry>
   
@@ -163,9 +169,9 @@
       <category term="js" scheme="http://sinaad.github.io/categories/js/"/>
     
     
-      <category term="es6" scheme="http://sinaad.github.io/tags/es6/"/>
-    
       <category term="js" scheme="http://sinaad.github.io/tags/js/"/>
+    
+      <category term="es6" scheme="http://sinaad.github.io/tags/es6/"/>
     
       <category term="tdz" scheme="http://sinaad.github.io/tags/tdz/"/>
     

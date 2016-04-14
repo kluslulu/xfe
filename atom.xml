@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{XFE}</title>
   
-  <link href="/atom.xml" rel="self"/>
+  <link href="/xfe/atom.xml" rel="self"/>
   
-  <link href="http://sinaad.github.io/xfe/"/>
+  <link href="http://sinaad.github.io/"/>
   <updated>2016-04-14T10:07:29.000Z</updated>
-  <id>http://sinaad.github.io/xfe/</id>
+  <id>http://sinaad.github.io/</id>
   
   <author>
     <name>SINA FE Team</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>cut-and-copy-commands</title>
-    <link href="http://sinaad.github.io/xfe/2016/04/14/cut-and-copy-commands/"/>
-    <id>http://sinaad.github.io/xfe/2016/04/14/cut-and-copy-commands/</id>
+    <link href="http://sinaad.github.io/2016/04/14/cut-and-copy-commands/"/>
+    <id>http://sinaad.github.io/2016/04/14/cut-and-copy-commands/</id>
     <published>2016-04-14T05:33:23.000Z</published>
     <updated>2016-04-14T10:07:29.000Z</updated>
     
@@ -64,14 +64,14 @@
     </summary>
     
     
-      <category term="js, cut, copy, chrome" scheme="http://sinaad.github.io/xfe/tags/js-cut-copy-chrome/"/>
+      <category term="js, cut, copy, chrome" scheme="http://sinaad.github.io/tags/js-cut-copy-chrome/"/>
     
   </entry>
   
   <entry>
     <title>暂时性死区(TDZ)并不神秘</title>
-    <link href="http://sinaad.github.io/xfe/2016/02/26/temporal-dead-zone-tdz-demystified/"/>
-    <id>http://sinaad.github.io/xfe/2016/02/26/temporal-dead-zone-tdz-demystified/</id>
+    <link href="http://sinaad.github.io/2016/02/26/temporal-dead-zone-tdz-demystified/"/>
+    <id>http://sinaad.github.io/2016/02/26/temporal-dead-zone-tdz-demystified/</id>
     <published>2016-02-26T09:16:19.000Z</published>
     <updated>2016-04-14T06:36:55.000Z</updated>
     
@@ -160,23 +160,23 @@
     
     </summary>
     
-      <category term="js" scheme="http://sinaad.github.io/xfe/categories/js/"/>
+      <category term="js" scheme="http://sinaad.github.io/categories/js/"/>
     
     
-      <category term="es6" scheme="http://sinaad.github.io/xfe/tags/es6/"/>
+      <category term="es6" scheme="http://sinaad.github.io/tags/es6/"/>
     
-      <category term="js" scheme="http://sinaad.github.io/xfe/tags/js/"/>
+      <category term="js" scheme="http://sinaad.github.io/tags/js/"/>
     
-      <category term="tdz" scheme="http://sinaad.github.io/xfe/tags/tdz/"/>
+      <category term="tdz" scheme="http://sinaad.github.io/tags/tdz/"/>
     
-      <category term="translate" scheme="http://sinaad.github.io/xfe/tags/translate/"/>
+      <category term="translate" scheme="http://sinaad.github.io/tags/translate/"/>
     
   </entry>
   
   <entry>
     <title>ES6介绍：块作用域</title>
-    <link href="http://sinaad.github.io/xfe/2016/02/25/es6-block-scoping/"/>
-    <id>http://sinaad.github.io/xfe/2016/02/25/es6-block-scoping/</id>
+    <link href="http://sinaad.github.io/2016/02/25/es6-block-scoping/"/>
+    <id>http://sinaad.github.io/2016/02/25/es6-block-scoping/</id>
     <published>2016-02-25T10:40:47.000Z</published>
     <updated>2016-04-14T06:36:55.000Z</updated>
     
@@ -260,19 +260,19 @@
     
     </summary>
     
-      <category term="js" scheme="http://sinaad.github.io/xfe/categories/js/"/>
+      <category term="js" scheme="http://sinaad.github.io/categories/js/"/>
     
     
-      <category term="es6" scheme="http://sinaad.github.io/xfe/tags/es6/"/>
+      <category term="es6" scheme="http://sinaad.github.io/tags/es6/"/>
     
-      <category term="blockscoping" scheme="http://sinaad.github.io/xfe/tags/blockscoping/"/>
+      <category term="blockscoping" scheme="http://sinaad.github.io/tags/blockscoping/"/>
     
   </entry>
   
   <entry>
     <title>hexo+mathjax生成公式测试</title>
-    <link href="http://sinaad.github.io/xfe/2016/02/19/hexo-mathjax-test/"/>
-    <id>http://sinaad.github.io/xfe/2016/02/19/hexo-mathjax-test/</id>
+    <link href="http://sinaad.github.io/2016/02/19/hexo-mathjax-test/"/>
+    <id>http://sinaad.github.io/2016/02/19/hexo-mathjax-test/</id>
     <published>2016-02-19T08:04:15.000Z</published>
     <updated>2016-04-14T07:01:36.000Z</updated>
     
@@ -296,23 +296,23 @@
     
     </summary>
     
-      <category term="other" scheme="http://sinaad.github.io/xfe/categories/other/"/>
+      <category term="other" scheme="http://sinaad.github.io/categories/other/"/>
     
     
-      <category term="latex" scheme="http://sinaad.github.io/xfe/tags/latex/"/>
+      <category term="latex" scheme="http://sinaad.github.io/tags/latex/"/>
     
-      <category term="hexo-math" scheme="http://sinaad.github.io/xfe/tags/hexo-math/"/>
+      <category term="hexo-math" scheme="http://sinaad.github.io/tags/hexo-math/"/>
     
-      <category term="mathjax" scheme="http://sinaad.github.io/xfe/tags/mathjax/"/>
+      <category term="mathjax" scheme="http://sinaad.github.io/tags/mathjax/"/>
     
-      <category term="algo" scheme="http://sinaad.github.io/xfe/tags/algo/"/>
+      <category term="algo" scheme="http://sinaad.github.io/tags/algo/"/>
     
   </entry>
   
   <entry>
     <title>使用hexo和github创建团队博客</title>
-    <link href="http://sinaad.github.io/xfe/2016/02/18/create-team-blog-with-hexo-and-github/"/>
-    <id>http://sinaad.github.io/xfe/2016/02/18/create-team-blog-with-hexo-and-github/</id>
+    <link href="http://sinaad.github.io/2016/02/18/create-team-blog-with-hexo-and-github/"/>
+    <id>http://sinaad.github.io/2016/02/18/create-team-blog-with-hexo-and-github/</id>
     <published>2016-02-18T14:07:44.000Z</published>
     <updated>2016-04-14T06:36:55.000Z</updated>
     
@@ -347,7 +347,7 @@
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git remote add origin https://github.com/sinaad/xfe.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;接下来，你需要吧xfe文件夹的内容推送到remote的gh-pages分支上去， 这里需要用到强制推送，否则你就先pull一下在push&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 提交&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git add .&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git ci -m &lt;span class=&quot;string&quot;&gt;&quot;first commit&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 创建并切换到本地gh-pages分支&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git co -b gh-pages&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 强制提交gh-pages分支&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git push &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; origin gh-pages&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果提交成功了，就可以通过&lt;a href=&quot;http://sinaad.github.io/xfe进行访问了，&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sinaad.github.io/xfe进行访问了，&lt;/a&gt; 打工告成！！！&lt;/p&gt;
+&lt;p&gt;如果提交成功了，就可以通过&lt;a href=&quot;http://sinaad.github.io/xfe进行访问了，&quot;&gt;http://sinaad.github.io/xfe进行访问了，&lt;/a&gt; 打工告成！！！&lt;/p&gt;
 &lt;h3 id=&quot;其他方法&quot;&gt;&lt;a href=&quot;#其他方法&quot; class=&quot;headerlink&quot; title=&quot;其他方法&quot;&gt;&lt;/a&gt;其他方法&lt;/h3&gt;&lt;p&gt;上面描述了一种先通过hexo初始化项目，后关联github的方式来创建，当然你也可以先申请repo，然后通过&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt; https://github.com/sinaad/xfe.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;来创建这个xfe目录，并拉取gh-pages分支&lt;/p&gt;
@@ -374,7 +374,7 @@
 &lt;/ol&gt;
 &lt;p&gt;感谢对知识的无私贡献&lt;/p&gt;
 &lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;其实没什么好总结的，&lt;a href=&quot;http://hexo.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://hexo.io&lt;/a&gt; 上都写的很清楚，hexo还提供了各种丰富的风格包可以简单安装，你还可以自己看看然后个性化你的blog&lt;/p&gt;
-&lt;p&gt;最后，欢迎关注 &lt;a href=&quot;https://sinaad.github.io/xfe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://sinaad.github.io/xfe&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最后，欢迎关注 &lt;a href=&quot;https://sinaad.github.io/xfe&quot;&gt;https://sinaad.github.io/xfe&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;其他&quot;&gt;&lt;a href=&quot;#其他&quot; class=&quot;headerlink&quot; title=&quot;其他&quot;&gt;&lt;/a&gt;其他&lt;/h2&gt;&lt;h3 id=&quot;配置多说评论框&quot;&gt;&lt;a href=&quot;#配置多说评论框&quot; class=&quot;headerlink&quot; title=&quot;配置多说评论框&quot;&gt;&lt;/a&gt;配置多说评论框&lt;/h3&gt;&lt;p&gt;国内，多说算是比较好的一个评论管理平台，hexo也能很简单的集成多说&lt;br&gt;1、访问 &lt;a href=&quot;http://duoshuo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://duoshuo.com/&lt;/a&gt; ，点我要安装，按步骤填写&lt;br&gt;2、找到多说域名前面你填入的那个子域名，比如sinaad-xfe&lt;br&gt;3、配置_config.yml文件&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# Duoshuo ShortName&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;duoshuo_shortname: sinaad-xfe&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;配置tags&quot;&gt;&lt;a href=&quot;#配置tags&quot; class=&quot;headerlink&quot; title=&quot;配置tags&quot;&gt;&lt;/a&gt;配置tags&lt;/h3&gt;&lt;p&gt;根据上面的步骤完成后，点击tags是404的页面，需要通过下面的步骤来配置&lt;/p&gt;
 &lt;p&gt;1、通过命令生成tags页面&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;hexo new page &lt;span class=&quot;string&quot;&gt;&quot;tags&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -399,21 +399,21 @@
     
     </summary>
     
-      <category term="other" scheme="http://sinaad.github.io/xfe/categories/other/"/>
+      <category term="other" scheme="http://sinaad.github.io/categories/other/"/>
     
     
-      <category term="hexo" scheme="http://sinaad.github.io/xfe/tags/hexo/"/>
+      <category term="hexo" scheme="http://sinaad.github.io/tags/hexo/"/>
     
-      <category term="github" scheme="http://sinaad.github.io/xfe/tags/github/"/>
+      <category term="github" scheme="http://sinaad.github.io/tags/github/"/>
     
-      <category term="blog" scheme="http://sinaad.github.io/xfe/tags/blog/"/>
+      <category term="blog" scheme="http://sinaad.github.io/tags/blog/"/>
     
   </entry>
   
   <entry>
     <title>当前端也拥有 Server 的能力</title>
-    <link href="http://sinaad.github.io/xfe/2016/02/18/when-fe-has-the-power-of-server/"/>
-    <id>http://sinaad.github.io/xfe/2016/02/18/when-fe-has-the-power-of-server/</id>
+    <link href="http://sinaad.github.io/2016/02/18/when-fe-has-the-power-of-server/"/>
+    <id>http://sinaad.github.io/2016/02/18/when-fe-has-the-power-of-server/</id>
     <published>2016-02-18T08:29:25.000Z</published>
     <updated>2016-04-14T06:36:55.000Z</updated>
     
@@ -459,14 +459,14 @@
     
     </summary>
     
-      <category term="share" scheme="http://sinaad.github.io/xfe/categories/share/"/>
+      <category term="share" scheme="http://sinaad.github.io/categories/share/"/>
     
     
-      <category term="js" scheme="http://sinaad.github.io/xfe/tags/js/"/>
+      <category term="js" scheme="http://sinaad.github.io/tags/js/"/>
     
-      <category term="server" scheme="http://sinaad.github.io/xfe/tags/server/"/>
+      <category term="server" scheme="http://sinaad.github.io/tags/server/"/>
     
-      <category term="ServiceWorker" scheme="http://sinaad.github.io/xfe/tags/ServiceWorker/"/>
+      <category term="ServiceWorker" scheme="http://sinaad.github.io/tags/ServiceWorker/"/>
     
   </entry>
   

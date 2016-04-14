@@ -27,16 +27,16 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+  <link href="/xfe/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
 
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/xfe/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+<link href="/xfe/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="hexo,github,blog," />
@@ -45,12 +45,12 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="{XFE}" type="application/atom+xml" />
+  <link rel="alternate" href="/xfe/atom.xml" title="{XFE}" type="application/atom+xml" />
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/xfe/favicon.ico?v=0.5.0" />
 
 
 
@@ -66,7 +66,7 @@ markdown是一种对码农来说比较自然的写博文的方式
 hex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用hexo和github创建团队博客">
-<meta property="og:url" content="http://sinaad.github.io/xfe/2016/02/18/create-team-blog-with-hexo-and-github/index.html">
+<meta property="og:url" content="http://sinaad.github.io/2016/02/18/create-team-blog-with-hexo-and-github/index.html">
 <meta property="og:site_name" content="{XFE}">
 <meta property="og:description" content="为了沉淀团队技术分享，所以最近需要创建一个前端团队博客，确定了下面几个目标：
 
@@ -139,7 +139,7 @@ hex">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/xfe/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">{XFE}</span>
       <span class="logo-line-after"><i></i></span>
@@ -164,7 +164,7 @@ hex">
       
         
         <li class="menu-item menu-item-home">
-          <a href="/xfe" rel="section">
+          <a href="/xfe/xfe" rel="section">
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
@@ -174,7 +174,7 @@ hex">
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/xfe/categories" rel="section">
             
               <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
             
@@ -184,7 +184,7 @@ hex">
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+          <a href="/xfe/about" rel="section">
             
               <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
             
@@ -194,7 +194,7 @@ hex">
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/xfe/archives" rel="section">
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
@@ -204,7 +204,7 @@ hex">
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/xfe/tags" rel="section">
             
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
@@ -285,7 +285,7 @@ hex">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/other/" itemprop="url" rel="index">
+                  <a href="/xfe/categories/other/" itemprop="url" rel="index">
                     <span itemprop="name">other</span>
                   </a>
                 </span>
@@ -301,7 +301,7 @@ hex">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/18/create-team-blog-with-hexo-and-github/#comments" itemprop="discussionUrl">
+                <a href="/xfe/2016/02/18/create-team-blog-with-hexo-and-github/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/create-team-blog-with-hexo-and-github/" itemprop="commentsCount"></span>
                 </a>
               </span>
@@ -354,7 +354,7 @@ hex">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/sinaad/xfe.git</span><br></pre></td></tr></table></figure>
 <p>接下来，你需要吧xfe文件夹的内容推送到remote的gh-pages分支上去， 这里需要用到强制推送，否则你就先pull一下在push</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提交</span></span><br><span class="line">git add .</span><br><span class="line">git ci -m <span class="string">"first commit"</span></span><br><span class="line"><span class="comment"># 创建并切换到本地gh-pages分支</span></span><br><span class="line">git co -b gh-pages</span><br><span class="line"><span class="comment"># 强制提交gh-pages分支</span></span><br><span class="line">git push <span class="_">-f</span> origin gh-pages</span><br></pre></td></tr></table></figure>
-<p>如果提交成功了，就可以通过<a href="http://sinaad.github.io/xfe进行访问了，" target="_blank" rel="external">http://sinaad.github.io/xfe进行访问了，</a> 打工告成！！！</p>
+<p>如果提交成功了，就可以通过<a href="http://sinaad.github.io/xfe进行访问了，">http://sinaad.github.io/xfe进行访问了，</a> 打工告成！！！</p>
 <h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><p>上面描述了一种先通过hexo初始化项目，后关联github的方式来创建，当然你也可以先申请repo，然后通过</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/sinaad/xfe.git</span><br></pre></td></tr></table></figure>
 <p>来创建这个xfe目录，并拉取gh-pages分支</p>
@@ -381,7 +381,7 @@ hex">
 </ol>
 <p>感谢对知识的无私贡献</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实没什么好总结的，<a href="http://hexo.io" target="_blank" rel="external">http://hexo.io</a> 上都写的很清楚，hexo还提供了各种丰富的风格包可以简单安装，你还可以自己看看然后个性化你的blog</p>
-<p>最后，欢迎关注 <a href="https://sinaad.github.io/xfe" target="_blank" rel="external">https://sinaad.github.io/xfe</a></p>
+<p>最后，欢迎关注 <a href="https://sinaad.github.io/xfe">https://sinaad.github.io/xfe</a></p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="配置多说评论框"><a href="#配置多说评论框" class="headerlink" title="配置多说评论框"></a>配置多说评论框</h3><p>国内，多说算是比较好的一个评论管理平台，hexo也能很简单的集成多说<br>1、访问 <a href="http://duoshuo.com/" target="_blank" rel="external">http://duoshuo.com/</a> ，点我要安装，按步骤填写<br>2、找到多说域名前面你填入的那个子域名，比如sinaad-xfe<br>3、配置_config.yml文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Duoshuo ShortName</span></span><br><span class="line">duoshuo_shortname: sinaad-xfe</span><br></pre></td></tr></table></figure></p>
 <h3 id="配置tags"><a href="#配置tags" class="headerlink" title="配置tags"></a>配置tags</h3><p>根据上面的步骤完成后，点击tags是404的页面，需要通过下面的步骤来配置</p>
 <p>1、通过命令生成tags页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page <span class="string">"tags"</span></span><br></pre></td></tr></table></figure></p>
@@ -403,11 +403,11 @@ hex">
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag">#hexo</a>
+            <a href="/xfe/tags/hexo/" rel="tag">#hexo</a>
           
-            <a href="/tags/github/" rel="tag">#github</a>
+            <a href="/xfe/tags/github/" rel="tag">#github</a>
           
-            <a href="/tags/blog/" rel="tag">#blog</a>
+            <a href="/xfe/tags/blog/" rel="tag">#blog</a>
           
         </div>
       
@@ -416,7 +416,7 @@ hex">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/18/when-fe-has-the-power-of-server/" rel="next" title="当前端也拥有 Server 的能力">
+              <a href="/xfe/2016/02/18/when-fe-has-the-power-of-server/" rel="next" title="当前端也拥有 Server 的能力">
                 <i class="fa fa-chevron-left"></i> 当前端也拥有 Server 的能力
               </a>
             
@@ -424,7 +424,7 @@ hex">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/19/hexo-mathjax-test/" rel="prev" title="hexo+mathjax生成公式测试">
+              <a href="/xfe/2016/02/19/hexo-mathjax-test/" rel="prev" title="hexo+mathjax生成公式测试">
                 hexo+mathjax生成公式测试 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -516,7 +516,7 @@ hex">
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives">
+            <a href="/xfe/archives">
               <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
@@ -524,7 +524,7 @@ hex">
           
           
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/xfe/categories">
                 <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -533,7 +533,7 @@ hex">
 
           
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/xfe/tags">
                 <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -544,7 +544,7 @@ hex">
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
+            <a href="/xfe/atom.xml" rel="alternate">
               <i class="fa fa-rss"></i>
               RSS
             </a>
@@ -647,41 +647,41 @@ hex">
 
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="/xfe/vendors/jquery/index.js?v=2.1.3"></script>
 
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/xfe/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="/xfe/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/xfe/vendors/velocity/velocity.min.js"></script>
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+  <script type="text/javascript" src="/xfe/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
+  <script type="text/javascript" src="/xfe/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
   
-  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/xfe/js/src/utils.js?v=0.5.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/xfe/js/src/motion.js?v=0.5.0"></script>
 
 
 
   
   
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+
+  <script type="text/javascript" src="/xfe/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/xfe/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/xfe/js/src/scrollspy.js?v=0.5.0"></script>
 
 <script type="text/javascript" id="sidebar.toc.highlight">
   $(document).ready(function () {
@@ -845,7 +845,7 @@ hex">
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/xfe/js/src/bootstrap.js?v=0.5.0"></script>
 
 
 

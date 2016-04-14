@@ -1,0 +1,905 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="es6,blockscoping," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="{XFE}" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="本文根据 http://dev.venntro.com/2013/09/es6-part-2/ 翻译
+这是介绍即将到来的es6规范特性的系列文章的十个章节中的第二部分。如果你没读过第一部分，读一读可能对你有益。
+Let声明在ES5(当前ECMAScript规范的主要版本，他被实现在所有的主流环境中) 中，变量只能被闭包在执行上下文的变量环境中。实际上，这意味着变量（通过var语句声明）是通过他们所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6介绍：块作用域">
+<meta property="og:url" content="http://sinaad.github.io/xfe/2016/02/25/es6-block-scoping/index.html">
+<meta property="og:site_name" content="{XFE}">
+<meta property="og:description" content="本文根据 http://dev.venntro.com/2013/09/es6-part-2/ 翻译
+这是介绍即将到来的es6规范特性的系列文章的十个章节中的第二部分。如果你没读过第一部分，读一读可能对你有益。
+Let声明在ES5(当前ECMAScript规范的主要版本，他被实现在所有的主流环境中) 中，变量只能被闭包在执行上下文的变量环境中。实际上，这意味着变量（通过var语句声明）是通过他们所">
+<meta property="og:updated_time" content="2016-04-14T06:36:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6介绍：块作用域">
+<meta name="twitter:description" content="本文根据 http://dev.venntro.com/2013/09/es6-part-2/ 翻译
+这是介绍即将到来的es6规范特性的系列文章的十个章节中的第二部分。如果你没读过第一部分，读一读可能对你有益。
+Let声明在ES5(当前ECMAScript规范的主要版本，他被实现在所有的主流环境中) 中，变量只能被闭包在执行上下文的变量环境中。实际上，这意味着变量（通过var语句声明）是通过他们所">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ES6介绍：块作用域 | {XFE} </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?13989991106bdad30ea927ab9ae93a09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">{XFE}</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/xfe" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ES6介绍：块作用域
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-25T18:40:47+08:00" content="2016-02-25">
+              2016-02-25
+            </time>
+          </span>
+
+          
+          <span class="post-author">
+            &nbsp; | &nbsp;
+            acelan
+          </span>
+          
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/25/es6-block-scoping/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/es6-block-scoping/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文根据 <a href="http://dev.venntro.com/2013/09/es6-part-2/" target="_blank" rel="external">http://dev.venntro.com/2013/09/es6-part-2/</a> 翻译</p>
+<p>这是介绍即将到来的es6规范特性的系列文章的十个章节中的第二部分。如果你没读过第一部分，读一读可能对你有益。</p>
+<h2 id="Let声明"><a href="#Let声明" class="headerlink" title="Let声明"></a>Let声明</h2><p>在ES5(当前ECMAScript规范的主要版本，他被实现在所有的主流环境中) 中，变量只能被闭包在执行上下文的变量环境中。实际上，这意味着变量（通过var语句声明）是通过他们所在的执行上下文来访问：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(y); <span class="comment">// undefined (not a ReferenceError)</span></span><br><span class="line">    <span class="built_in">console</span>.log(z); <span class="comment">// ReferenceError: z is not defined</span></span><br><span class="line">    <span class="keyword">if</span> (x) &#123;</span><br><span class="line">        <span class="keyword">var</span> y = <span class="number">5</span>; <span class="comment">// This declaration is hoisted</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这归结于一个众所周知的概念叫“hoisting（提升）”。当一个函数被调用时，定义绑定初始化算法将函数代码中的每一个变量声明和函数声明以绑定的方式在变量环境中创建。如果你想了解更多关于JavaScript中hoisting的知识，我建议你去读读Ben Cherry的专题文章。</p>
+<p>ES6的变量和函数声明依然有这样的表现（这对于向后兼容是一件好事）。不仅如此，接下来要介绍的let关键字给了我们更多的灵活性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(y); <span class="comment">// ReferenceError: y is not defined</span></span><br><span class="line">    <span class="keyword">if</span> (x) &#123;</span><br><span class="line">        <span class="keyword">let</span> y = <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过let语句声明的变量被绑定在当前执行上下文的词法环境，而不是在变量环境中。ES6规范对于块语句的一个改变是每一个块都有他自己的词法环境。在上面的例子中，当块（if语句的内容）被执行的时候会创建一个新的词法环境。当let语句被执行的时候会往这个词法环境中添加一个对应的绑定，并且它无法被外部的词法环境（函数声明的这个词法环境）访问到。</p>
+<blockquote>
+<p>译者：这里应该就是没有hoisting和所谓暂时性死区（TDZ）产生的原因, 这里的描述不够完整，完整的规范描述和分析见本文后面<a href="#补充说明">补充说明</a></p>
+</blockquote>
+<p>在ES6草案中我们能找到针对块的这个新的词法环境的创建细节：</p>
+<p>Block : { StatementList }</p>
+<ol>
+<li>使oldEnv为当前执行上下文的词法环境。</li>
+<li>使blockEnv为通过传递oldEnv为参数调用<code>NewDeclarativeEnvironment</code>方法获得的声明式环境记录项</li>
+<li>使用块代码和blockEnv来执行块定义初始化<code>BlockDeclarationInstantiation(code, env）</code></li>
+<li>设置执行上下文的词法环境为blockEnv.</li>
+</ol>
+<blockquote>
+<p>译者：这里两个方法<code>NewDeclarativeEnvironment</code>和<code>BlockDeclarationInstantiation(code, env）</code> 传送门 <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-newdeclarativeenvironment" target="_blank" rel="external">http://www.ecma-international.org/ecma-262/6.0/index.html#sec-newdeclarativeenvironment</a> 和 <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-blockdeclarationinstantiation" target="_blank" rel="external">http://www.ecma-international.org/ecma-262/6.0/index.html#sec-blockdeclarationinstantiation</a><br><code>NewDeclarativeEnvironment</code>这个方法简单说就是创建一个新的声明式环境，它的外部环境是传入的oldEnv<br><code>BlockDeclarationInstantiation(code, env）</code>这个方法跟本文关系比较密切，见本文后面<a href="#补充说明">补充说明</a></p>
+<p>译者：<del>这里有个疑问，oldEnv被传递来创建新的blockEnv，那么blockEnv应该是持有外部词法环境，那么查找在上面的TDZ形成的时候查找不到应该去查找外部词法环境就是oldEnv，也就是如果外部声明了某个变量的时候就应该找到而不是报错，这样就没有TDZ的概念了</del><br>看另外一个文章，已经没有疑问了，只是规范并不是很正式的说明，也没有具体的实现细节，规范内容见本文后面<a href="#补充说明">补充说明</a><br>例如：<br>    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    foo = <span class="number">111</span>;  <span class="comment">//ReferenceError？</span></span><br><span class="line">    <span class="keyword">let</span> foo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>值得注意的是let声明不会像var声明一样被提升。试图在let声明被执行之前引用一个标识符会导致错误：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// ReferenceError: x is not defined</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>任何能使用var声明地方都能使用let声明。特别值得关注的是他在loop初始值化器的使用。当使用var语句作为loop的初始化器时这个声明将被提升变量将被通过他所在的执行上下文访问。这对于那些从实现了块作用域的语言中转过来的新手来说，很容易导致混乱。<br>通过let声明我们能够确保loop的计数器只能被他的块所访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i); <span class="comment">// Prints 0 to 9</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">// ReferenceError: i is not defined</span></span><br></pre></td></tr></table></figure>
+<h2 id="Const声明"><a href="#Const声明" class="headerlink" title="Const声明"></a>Const声明</h2><p>ES6介绍了另外一个声明类型，const(ES6 § 13.2.1). 他有和let一样的块作用域绑定语义,但是他的值是一个只读的常量。不同于let和var声明，他们必须初始化：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x; <span class="comment">// x === undefined</span></span><br><span class="line"><span class="keyword">const</span> z; <span class="comment">// SyntaxError: const declarations must have an initializer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> y = <span class="number">10</span>; <span class="comment">// y === 10</span></span><br><span class="line"></span><br><span class="line">y = <span class="number">20</span>; <span class="comment">// SyntaxError: Assignment to constant variable</span></span><br></pre></td></tr></table></figure>
+<p>注意const关键字被很多引擎支持有一段时间了，但是在ES6规范中有一些略微的不同。一个主要的差别是常量当前被声明在函数作用域而不是块作用域（不是块作用域么，翻译有问题？）。企图为一个常量赋值会导致失败，但是在所有的引擎中都不会导致报错。</p>
+<blockquote>
+<p>译者：我觉得const最大的需要注意的地方应该在于对于引用类型，比如对象的const上，这里的应该分歧较多，本文没有提到</p>
+</blockquote>
+<h2 id="块中的函数声明"><a href="#块中的函数声明" class="headerlink" title="块中的函数声明"></a>块中的函数声明</h2><p>ES5中函数声明不允许出现在块中。然而很多实现允许这样，导致了在这些实现中有不同的行为（ES5 §12）：</p>
+<p>目前广泛使用的几种ECMAScript的实现是支持把函数声明作为一个语句的。然而这些实现中对这样函数声明的语法应用上有着重大的，不可调和的差异。</p>
+<p>ES6提议明确允许函数声明出现在块中，也遵守和let，const声明一样的语义：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Do stuff</span></span><br><span class="line">    &#125;</span><br><span class="line">    someObj.method = fn;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn); <span class="comment">// ReferenceError: fn is not defined</span></span><br></pre></td></tr></table></figure>
+<p>然而，这个提议是否可能被实现，依然存在着一些不同的声音，因此我不能确定他是否会被写入最终的规范。如果你对这些疑难的讨论感兴趣，可以去Mozilla和Webkit的issue中看看。</p>
+<p>下节再见，下次我们将看看解构，可能是ES6中最多被谈到的特性之一。follow我们的twitter，在文章发布的时候得到通知，还有别忘了我们正在招聘…</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><h3 id="ES6-amp-13-2-14-运行时语义：块定义初始化"><a href="#ES6-amp-13-2-14-运行时语义：块定义初始化" class="headerlink" title="ES6 &amp; 13.2.14 运行时语义：块定义初始化"></a>ES6 &amp; 13.2.14 运行时语义：块定义初始化</h3><p><em>注意</em> 当一个普通块或者Case块内容被执行时，一个新的声明式环境记录被创建并且在这个环境记录项中初始化每一个块作用域的变量，常量，函数，生成器函数，或者块中的类声明的绑定。</p>
+<p>块定义初始化使用code和env为参数，按照下面的方式来执行。code是块对应的内容的语法产生式。env是指绑定被创建的那个声明式环境记录。</p>
+<ol>
+<li>使declarations为代码的词法作用域声明</li>
+<li>针对每一个declarations里面的元素d, 执行<ul>
+<li>a. 对d的BoundNames里面的每一个元素dn，执行<ul>
+<li>i. 如果d的IsConstantDeclaration为true，那么<ol>
+<li>使status为env.CreateImmutableBinding(dn, true).</li>
+</ol>
+</li>
+<li>ii. 否则，<ol>
+<li>使status为env.CreateMutableBinding(dn, false).</li>
+</ol>
+</li>
+<li>iii. 断言：status永远不会是一个突然完结</li>
+</ul>
+</li>
+<li>b. 如果d是一个GeneratorDeclaration产生式或者FunctionDeclaration产生式, 那么<ul>
+<li>i. 使fn为d的BoundNames的唯一元素</li>
+<li>ii. 使fn为为了d使用env为参数执行InstantiateFunctionObject的结果</li>
+<li>iii. 执行env.InitializeBinding(fn, fo).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="ES6-amp-13-3-1-Let-and-Const-Declarations"><a href="#ES6-amp-13-3-1-Let-and-Const-Declarations" class="headerlink" title="ES6 &amp; 13.3.1 Let and Const Declarations"></a>ES6 &amp; 13.3.1 Let and Const Declarations</h3><blockquote>
+<p>这是规范中关于暂时性死区TDZ产生的原因的描述</p>
+</blockquote>
+<p><em>NOTE</em> let and const declarations define variables that are scoped to the running execution context’s LexicalEnvironment. The variables are created when their containing Lexical Environment is instantiated but may not be accessed in any way until the variable’s LexicalBinding is evaluated. A variable defined by a LexicalBinding with an Initializer is assigned the value of its Initializer’s AssignmentExpression when the LexicalBinding is evaluated, not when the variable is created. If a LexicalBinding in a let declaration does not have an Initializer the variable is assigned the value undefined when the LexicalBinding is evaluated.</p>
+<blockquote>
+<p>这里大概的意思是说，当遇到块语句的时候，就会创建一个新的词法环境，创建后会立即进行块定义初始化来绑定块中的变量（这里很像函数执行环境中的定义绑定初始化过程，也就是其实已经执行了类似的hoisting过程），唯一的差别在于上面的规范规定了在真正执行到let语句的时候（即使已经通过块定义初始化绑定）才能对变量引用进行读/写，这就产生了TDZ，且这也是虽然有定义初始化过程，但没显示出hoisting特性的原因</p>
+</blockquote>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/es6/" rel="tag">#es6</a>
+          
+            <a href="/tags/blockscoping/" rel="tag">#blockscoping</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/19/hexo-mathjax-test/" rel="next" title="hexo+mathjax生成公式测试">
+                <i class="fa fa-chevron-left"></i> hexo+mathjax生成公式测试
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/26/temporal-dead-zone-tdz-demystified/" rel="prev" title="暂时性死区(TDZ)并不神秘">
+                暂时性死区(TDZ)并不神秘 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/25/es6-block-scoping/"
+     data-title="ES6介绍：块作用域"
+     data-content=""
+     data-url="http://sinaad.github.io/xfe/2016/02/25/es6-block-scoping/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/25/es6-block-scoping/"
+           data-title="ES6介绍：块作用域" data-url="http://sinaad.github.io/xfe/2016/02/25/es6-block-scoping/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp4.sinaimg.cn/2231440955/180/5749469848/1"
+               alt="SINA FE Team" />
+          <p class="site-author-name" itemprop="name">SINA FE Team</p>
+          <p class="site-description motion-element" itemprop="description">我们一直努力贴好小广告</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/orgs/sinaad/teams/xfe" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/acelan" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Let声明"><span class="nav-number">1.</span> <span class="nav-text">Let声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Const声明"><span class="nav-number">2.</span> <span class="nav-text">Const声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块中的函数声明"><span class="nav-number">3.</span> <span class="nav-text">块中的函数声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充说明"><span class="nav-number">4.</span> <span class="nav-text">补充说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6-amp-13-2-14-运行时语义：块定义初始化"><span class="nav-number">4.1.</span> <span class="nav-text">ES6 & 13.2.14 运行时语义：块定义初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6-amp-13-3-1-Let-and-Const-Declarations"><span class="nav-number">4.2.</span> <span class="nav-text">ES6 & 13.3.1 Let and Const Declarations</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SINA FE Team</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sinaad-xfe"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        //  do something with the error.  message[2] is the Error object that records the problem.
+        console.log(message);
+      });
+  </script>
+
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+  </script>
+
+  <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+
+</body>
+</html>
